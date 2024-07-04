@@ -1,0 +1,209 @@
+/*
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/ClientSide/css.css to edit this template
+*/
+/* 
+    Created on : May 21, 2024, 5:42:10 PM
+    Author     : Desktop
+*/
+
+/*
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/ClientSide/css.css to edit this template
+*/
+/* 
+    Created on : May 18, 2024, 10:33:16 AM
+    Author     : Desktop
+*/
+
+.nav
+{
+    background-color: #005EB4;
+    height: 4.5rem;
+    width: 100%;
+    display: flex;
+    /*justify-content: center;*/
+    align-items: center;
+
+
+}
+.nav-logo
+{
+    margin-left: 10px;
+
+}
+.nav-elements
+{
+    display: flex;
+    gap: 40px;
+    align-items: center;
+    height: 100%;
+    width: 70%;
+    margin-left: 80px
+}
+.nav-click
+{
+    text-decoration: none;
+    color: white;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+
+}
+.nav-click:hover
+{
+    color: black;
+    background: rgba(128, 128, 128, 0.2);
+
+    transform: scale(1.1);
+
+}
+.nav-icons
+{
+    display: flex;
+    width: 15%;
+    gap: 15px;
+    justify-content: end;
+
+}
+.fa-search , .fa-user
+{
+    font-size: 24px;
+    cursor: pointer;
+}
+.fa-search:hover
+{
+    color: white;
+}
+.fa-user:hover
+{
+    color: white;
+}
+
+#rightBar
+{
+
+    position: fixed;
+    top: 60px;
+    right: 10px;
+    bottom: 0;
+    z-index: 900; /* Đảm bảo left-bar nằm trên các phần tử khác */
+    width: 250px; /* Điều chỉnh độ rộng của left-bar */
+    height: 250px;
+    background-color: #FFFFFF; /* Màu nền của left-bar */
+    padding: 20px; /* Khoảng cách giữa các phần tử trong left-bar */
+    overflow-y: auto;
+    border-radius: 20px;
+    align-items: center;
+
+}
+#rightBar
+{
+    display: none;
+}
+
+#search{
+    display: none;
+}
+.overlay{
+    background-color: rgba(0,0,0,0.5);
+    position: fixed;
+    top:0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 500;
+}
+.search-block
+{
+    background-color: #f0f0f0;
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    height: 200px;
+    z-index: 400;
+    padding: 40px 100px 40px 100px;
+    /*    text-align: center;*/
+}
+.search-block p
+{
+    color: rgb(80, 91, 115);
+    font-family: cursive;
+}
+.search-form
+{
+    display: flex;
+    gap :10px;
+    align-items: center;
+    border-bottom: black 1px solid;
+}
+.search-input
+{
+    width: 100%;
+    height: 48px;
+    border: none;
+    background-color: #f0f0f0;
+}
+
+.search-input:focus
+{
+    outline: none;
+
+}
+.search-input::placeholder
+{
+    font-size: 20px;
+    font-family: initial;
+}
+.fa-times
+{
+    position: fixed;
+    right: 10px;
+    top: 10px;
+    cursor: pointer;
+    font-size: 20px;
+}
+.avatar
+{
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    object-fit: cover;
+    
+}
+.login-block
+{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.edit , .changepass, .logout
+{
+    transition: transform 0.3s ease;
+
+    border-radius: 45px;
+}
+.changepass:hover
+{
+    color: orangered;
+    transform: scale(1.1);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    ;
+}
+.logout:hover
+{
+    color: orangered;
+    transform: scale(1.1);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    ;
+}
+.edit:hover
+{
+    color: orangered;
+    transform: scale(1.1);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    ;
+}
+
+

@@ -1,0 +1,388 @@
+/*
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/ClientSide/css.css to edit this template
+*/
+/* 
+    Created on : Jun 3, 2024, 2:53:08 PM
+    Author     : Zanis
+*/
+.card-on{
+    background-color: #f0f0f0;
+    position: fixed;
+    height: 500px;
+    padding: 40px 100px 40px 100px;
+    overflow: scroll;
+}
+
+.coach-fun-content {
+    display: block; /* Hoặc sử dụng float: left; hoặc các phương pháp khác để căn ngang */
+    margin-left: 300px;
+    margin-right: 100px;
+    margin-top: -100px;
+}
+
+.table-course
+{
+    box-sizing: border-box;
+    width: 100%;
+    height: 100%;
+    border-bottom:0;
+    margin: 100px 0 0 0;
+}
+.table-course thead
+{
+    background-color: buttonface;
+    border-bottom: 1px solid orange;
+
+}
+.card-add-form {
+    width: 30%;
+    height: 50%;
+
+}
+#add-course-form input, textArea
+{
+    width: 100%;
+    margin-bottom: 5px;
+}
+#update-course-form input, textArea
+{
+    width: 100%;
+    margin-bottom: 5px;
+}
+#add-course-button{
+    background-color: aquamarine;
+    padding: 5px 5px 5px 5px;
+    border-radius: 10px;
+}
+#add-course-button:hover {
+    background-color: aqua;
+    color: orange;
+}
+.button-choice{
+    display: flex;
+
+}
+
+#add-course-close ,#update-course-close{
+    cursor: pointer; /* Đổi con trỏ thành dấu mũi tên khi di chuột qua */
+    color: black; /* Màu của biểu tượng X */
+    font-size: 20px; /* Kích thước của biểu tượng */
+    transition: color 0.3s; /* Hiệu ứng màu khi di chuột qua */
+}
+#add-course-close:hover {
+    color: red; /* Màu của biểu tượng X khi di chuột qua */
+}
+#update-course-close:hover {
+    color: red; /* Màu của biểu tượng X khi di chuột qua */
+}
+.save
+{
+    border: 2px green solid;
+    border-radius: 0.5rem;
+    background-color: rgba(46, 204, 113, 0.5);
+}
+
+
+.close{
+    width: 6%;
+    border-radius: 20px;
+    background-color: rgba(231, 76, 60, 0.5) !important;
+}
+.table-course {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.table-course th,
+.table-course td {
+    padding: 10px;
+}
+
+.table-course tbody tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+.table-course tbody tr:hover {
+    background-color: #ddd;
+}
+
+.table-course tbody tr {
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.1);
+}
+
+.table-course th, .table-course td {
+    border: none;
+}
+.form-group
+{
+    margin-bottom: 5px;
+}
+.form-group input, textarea
+{
+    border: rgba(0,0,0,0.1) solid 0.5px;
+    border-radius: 1rem;
+    padding: 10px;
+}
+
+.form-heading
+{
+    font-family: "Arial", sans-serif;
+    font-weight: bold; /* Độ đậm */
+    color: #333; /* Màu chữ */
+    text-align: center; /* Căn giữa */
+
+    text-transform: uppercase; /* Chuyển đổi văn bản thành chữ hoa */
+}
+.button-choice
+{
+    justify-content: end;
+    margin-right: 5px;
+}
+
+.thead-form
+{
+    background-color: #0d6efd;
+    color: black; /* Màu chữ */
+    font: bold;
+}
+.thead-form th
+{
+    padding: 10px 15px; /* Khoảng cách bên trong ô */
+    text-align: left; /* Căn lề văn bản */
+    font-weight: bold; /* Độ đậm */
+    border-bottom: 2px solid white; /* Đường viền dưới */
+    border-right: 1px solid rgba(0, 0, 0, 0.3);
+    text-transform:uppercase;
+}
+.thead-form th:first-child
+{
+    border-top-left-radius: 5px;
+}
+.thead-form th:last-child
+{
+    border-top-right-radius: 5px;
+}
+td{
+    border-right: 1px solid rgba(0, 0, 0, 0.9);
+}
+td:last-child {
+    border-right: none; /* Loại bỏ đường viền bên phải của ô cuối cùng */
+}
+.hidden{
+    display: none;
+}
+.form-group select {
+    width: 100%; /* Chiều rộng 100% của phần tử cha */
+    padding: 10px; /* Khoảng cách bên trong của phần tử */
+    font-size: 16px; /* Cỡ chữ */
+    border: 1px solid #ccc; /* Viền của select */
+    border-radius: 5px; /* Bo tròn góc */
+    transition:  0.9s ease; /* Hiệu ứng transition cho tất cả thuộc tính */
+}
+
+/* Thiết lập kiểu chữ và màu sắc cho option */
+.form-group select option {
+    font-size: 14px; /* Cỡ chữ */
+    color: #333; /* Màu chữ */
+    background-color: #fff; /* Màu nền của option */
+    transition: background-color 0.3s ease; /* Hiệu ứng transition chỉ cho background-color */
+}
+
+/* Thiết lập kiểu chữ và màu sắc cho option khi được chọn */
+.form-group select option:checked {
+    background-color: #f0f0f0; /* Màu nền của option được chọn */
+}
+
+
+
+.table-course
+{
+    box-sizing: border-box;
+    width: 100%;
+    height: 100%;
+    border-bottom:0;
+    margin: 100px 0 0 0;
+}
+.table-course thead
+{
+    background-color: buttonface;
+    border-bottom: 1px solid orange;
+
+}
+.card-add-form{
+    width: 30%;
+}
+.card-update-form{
+    width: 30%;
+}
+
+#add-course-form input, textArea
+{
+    width: 100%;
+    margin-bottom: 5px;
+}
+#update-course-form input, textArea
+{
+    width: 100%;
+    margin-bottom: 5px;
+}
+#add-course-button{
+    background-color: aquamarine;
+    padding: 5px 5px 5px 5px;
+    border-radius: 10px;
+}
+#add-course-button:hover {
+    background-color: aqua;
+    color: orange;
+}
+.button-choice{
+    display: flex;
+
+}
+
+#add-course-close ,#update-course-close{
+    cursor: pointer; /* Đổi con trỏ thành dấu mũi tên khi di chuột qua */
+    color: black; /* Màu của biểu tượng X */
+    font-size: 20px; /* Kích thước của biểu tượng */
+    transition: color 0.3s; /* Hiệu ứng màu khi di chuột qua */
+}
+#add-course-close:hover {
+    color: red; /* Màu của biểu tượng X khi di chuột qua */
+}
+#update-course-close:hover {
+    color: red; /* Màu của biểu tượng X khi di chuột qua */
+}
+.save
+{
+    border: 2px green solid;
+    border-radius: 0.5rem;
+    background-color: rgba(46, 204, 113, 0.5);
+}
+
+
+.close{
+    width: 6%;
+    border-radius: 20px;
+    background-color: rgba(231, 76, 60, 0.5) !important;
+}
+.table-course {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.table-course th,
+.table-course td {
+    padding: 10px;
+}
+
+.table-course tbody tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+.table-course tbody tr:hover {
+    background-color: #ddd;
+}
+
+.table-course tbody tr {
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.1);
+}
+
+.table-course th, .table-course td {
+    border: none;
+}
+.form-group
+{
+    margin-bottom: 5px;
+}
+.form-group input, textarea
+{
+    border: rgba(0,0,0,0.1) solid 0.5px;
+    border-radius: 1rem;
+    padding: 10px;
+}
+
+.form-heading
+{
+    font-family: "Arial", sans-serif;
+    font-weight: bold; /* Độ đậm */
+    color: #333; /* Màu chữ */
+    text-align: center; /* Căn giữa */
+
+    text-transform: uppercase; /* Chuyển đổi văn bản thành chữ hoa */
+}
+.button-choice
+{
+    justify-content: end;
+    margin-right: 5px;
+}
+
+.thead-form
+{
+    background-color: #0d6efd;
+    color: black; /* Màu chữ */
+    font: bold;
+}
+.thead-form th
+{
+    padding: 10px 15px; /* Khoảng cách bên trong ô */
+    text-align: left; /* Căn lề văn bản */
+    font-weight: bold; /* Độ đậm */
+    border-bottom: 2px solid white; /* Đường viền dưới */
+    border-right: 1px solid rgba(0, 0, 0, 0.3);
+    text-transform:uppercase;
+}
+.thead-form th:first-child
+{
+    border-top-left-radius: 5px;
+}
+.thead-form th:last-child
+{
+    border-top-right-radius: 5px;
+}
+td{
+    border-right: 1px solid rgba(0, 0, 0, 0.9);
+}
+td:last-child {
+    border-right: none; /* Loại bỏ đường viền bên phải của ô cuối cùng */
+}
+.hidden{
+    display: none;
+}
+.form-group select {
+    width: 100%; /* Chiều rộng 100% của phần tử cha */
+    padding: 10px; /* Khoảng cách bên trong của phần tử */
+    font-size: 16px; /* Cỡ chữ */
+    border: 1px solid #ccc; /* Viền của select */
+    border-radius: 1rem; /* Bo tròn góc */
+    transition:  0.9s ease; /* Hiệu ứng transition cho tất cả thuộc tính */
+}
+
+/* Thiết lập kiểu chữ và màu sắc cho option */
+.form-group select option {
+    font-size: 14px; /* Cỡ chữ */
+    color: #333; /* Màu chữ */
+    background-color: #fff; /* Màu nền của option */
+    transition: background-color 0.3s ease; /* Hiệu ứng transition chỉ cho background-color */
+}
+
+/* Thiết lập kiểu chữ và màu sắc cho option khi được chọn */
+.form-group select option:checked {
+    background-color: #f0f0f0; /* Màu nền của option được chọn */
+}
+.card-add-form
+{
+    height: 75%;
+}
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.3);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    border-color: black;
+}
+

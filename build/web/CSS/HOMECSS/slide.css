@@ -1,0 +1,88 @@
+/*
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/ClientSide/css.css to edit this template
+*/
+/* 
+    Created on : May 18, 2024, 3:41:12 PM
+    Author     : Desktop
+*/
+
+.slider-item
+{
+    height: 80vh;
+    width: 100vw
+
+}
+.slider-item a
+{
+    text-decoration: none;
+    color: black;
+}
+.slider-item-one
+{
+    background-image: url("../..//IMAGE/HOME/banner.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.slider-item-two
+{
+    background-image: url("../..//IMAGE/HOME/development-02.webp");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.slider-item-three
+{
+    background-image: url("../..//IMAGE/HOME/Tickets.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.slider-item
+{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+}
+.slide-card
+{
+    margin-left: 60px;
+    width: 50%;
+}
+.slide-card .slide-title
+{
+    font-size: 32px;
+    color: white;
+    font-weight: bold;
+}
+.slide-title
+{
+    text-wrap: wrap;
+    transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+    text-align: left;
+    display: inline-block;
+    vertical-align:baseline;
+    font-family: initial;
+}
+.slide-detail
+{
+    text-align: center;
+    width: 17%;
+    padding: 5px 3px 5px 3px;
+
+    background-color: #005EB4;
+    border-radius: 20px;
+    transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+}
+.slide-detail a
+{
+    font-family: monospace;
+}
+.slide-detail:hover
+{
+    transform: scale(1.1);
+    background-color: #adb2b2
+
+}

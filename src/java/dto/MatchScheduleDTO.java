@@ -2,6 +2,7 @@ package dto;
 
 import Model.Ticket;
 import Model.TicketPurchase;
+import Model.Tournament;
 
 import java.time.LocalDate;
 import java.util.Date;
@@ -18,8 +19,11 @@ public class MatchScheduleDTO {
     private List<Ticket> tickets;
 
     private String homeTeamName;
+    private String homeTeamLogo;
     private String awayTeamName;
+    private String awayTeamLogo;
     private Map<Integer, TicketPurchase> ticketPurchaseMap;
+    private Tournament tournament;
 
     public int getMatchID() {
         return matchID;
@@ -99,5 +103,29 @@ public class MatchScheduleDTO {
 
     public void setTicketPurchaseMap(Map<Integer, TicketPurchase> ticketPurchaseMap) {
         this.ticketPurchaseMap = ticketPurchaseMap;
+    }
+
+    public String getHomeTeamLogo() {
+        return homeTeamLogo;
+    }
+
+    public void setHomeTeamLogo(String homeTeamLogo) {
+        this.homeTeamLogo = homeTeamLogo;
+    }
+
+    public String getAwayTeamLogo() {
+        return awayTeamLogo;
+    }
+
+    public void setAwayTeamLogo(String awayTeamLogo) {
+        this.awayTeamLogo = awayTeamLogo;
+    }
+
+    public Tournament getTournament() {
+        return tournament;
+    }
+
+    public void setTournament(Tournament tournament) {
+        this.tournament = tournament;
     }
 }

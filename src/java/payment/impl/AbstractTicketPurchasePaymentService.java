@@ -7,6 +7,7 @@ import Model.TicketPurchase;
 import Model.User;
 import constant.AppConstant;
 import dto.GetPaymentResponse;
+import org.apache.commons.lang3.StringUtils;
 import payment.IPaymentService;
 import payment.PaymentResponse;
 import utils.SessionUtils;
@@ -14,10 +15,7 @@ import utils.SessionUtils;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Properties;
+import java.util.*;
 
 public abstract class AbstractTicketPurchasePaymentService implements IPaymentService {
 
@@ -34,8 +32,12 @@ public abstract class AbstractTicketPurchasePaymentService implements IPaymentSe
             AppConstant.SESSION_KEY,
             User.class
         );
-        final String ticketId = req.getParameter("itemId");
-        final String paymentMethod = req.getParameter("paymentMethod");
+        final String ticketId = Optional.ofNullable(req.getParameter("itemId"))
+            .filter(StringUtils::isNotBlank)
+            .orElseGet(() -> req.getAttribute("itemId").toString());
+        final String paymentMethod = Optional.ofNullable(req.getParameter("paymentMethod"))
+            .filter(StringUtils::isNotBlank)
+            .orElseGet(() -> req.getAttribute("paymentMethod").toString());
         final Ticket ticket = this.ticketDAO.get(Integer.parseInt(ticketId))
             .orElseThrow(() -> new RuntimeException("khong tim thay ticket"));
         TicketPurchase ticketPurchase = new TicketPurchase();

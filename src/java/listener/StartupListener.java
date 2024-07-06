@@ -41,7 +41,7 @@ public class StartupListener implements ServletContextListener {
         );
         this.properties.put(
             "vnpay.return-url",
-            "http://localhost:8080/ticket/paid"
+            "ticket/paid"
         );
         this.properties.put(
             "vnpay.tmn-code",

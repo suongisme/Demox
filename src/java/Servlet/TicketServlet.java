@@ -15,6 +15,7 @@ import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.math.NumberUtils;
 import payment.IPaymentService;
 import payment.PaymentFactory;
+import utils.DateUtils;
 import utils.VnpayUtils;
 
 import javax.servlet.ServletException;
@@ -25,7 +26,6 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
-import java.time.ZoneId;
 import java.util.*;
 import java.util.function.Function;
 import java.util.stream.Collectors;
@@ -69,12 +69,12 @@ public class TicketServlet extends HttpServlet {
                     TicketPurchase::getTicketID,
                     Function.identity()
                 ));
-            final List<MatchScheduleDTO> matchScheduleDtoList = matchSchedules.stream().map(x -> {
+            final Map<String, List<MatchScheduleDTO>> matchScheduleDtoList = matchSchedules.stream().map(x -> {
                 final Team awayTeam = teamMap.get(x.getAwayTeamID());
                 final Team homeTeam = teamMap.get(x.getHomeTeamID());
 
                 MatchScheduleDTO matchScheduleDTO = new MatchScheduleDTO();
-                matchScheduleDTO.setMatchDate(Date.from(x.getMatchDate().atStartOfDay(ZoneId.systemDefault()).toInstant()));
+                matchScheduleDTO.setMatchDate(x.getMatchDate());
                 matchScheduleDTO.setMatchID(x.getMatchID());
                 matchScheduleDTO.setAwayTeamID(x.getAwayTeamID());
                 matchScheduleDTO.setLocation(x.getMatchLocation());
@@ -82,9 +82,15 @@ public class TicketServlet extends HttpServlet {
                 matchScheduleDTO.setHomeTeamName(homeTeam.getTeamName());
                 matchScheduleDTO.setAwayTeamName(awayTeam.getTeamName());
                 matchScheduleDTO.setTickets(ticketMap.get(x.getMatchID()));
+                matchScheduleDTO.setHomeTeamLogo(homeTeam.getFlag());
+                matchScheduleDTO.setAwayTeamLogo(awayTeam.getFlag());
                 matchScheduleDTO.setTicketPurchaseMap(ticketPurchaseMap);
+                matchScheduleDTO.setTournament(x.getTournament());
                 return matchScheduleDTO;
-            }).collect(Collectors.toList());
+            }).collect(Collectors.groupingBy(x -> DateUtils.format(
+                x.getMatchDate(),
+                "MMMM yyyy"
+            )));
             req.setAttribute(
                 "matchSchedules",
                 matchScheduleDtoList
@@ -108,7 +114,7 @@ public class TicketServlet extends HttpServlet {
 
                 if (!"00".equals(transactionStatus)) {
                     this.ticketPurchaseDAO.delete(Integer.parseInt(vnpTxnRef));
-                    resp.sendRedirect("/ticket");
+                    resp.sendRedirect(req.getContextPath() + "/ticket");
                     return;
                 }
 
@@ -144,7 +150,7 @@ public class TicketServlet extends HttpServlet {
                         ticketPurchase.setStatus(1);
                         ticketPurchase.setPurchaseID(NumberUtils.toInt(vnpTxnRef));
                         this.ticketPurchaseDAO.updateBatch(Collections.singletonList(ticketPurchase));
-                        resp.sendRedirect("/ticket");
+                        resp.sendRedirect(req.getContextPath() + "/ticket");
                     }
                 }
         }

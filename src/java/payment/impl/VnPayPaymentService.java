@@ -44,7 +44,6 @@ public class VnPayPaymentService extends AbstractTicketPurchasePaymentService {
         BigDecimal amount = ticket.getPrice().multiply(new BigDecimal("100")).setScale(0);
         final String orderInfoTemplate = properties.getProperty("vnpay.order-info-template");
         final String secretKey = properties.getProperty("vnpay.secret-key");
-        System.out.println(secretKey);
         final String payUrl = properties.getProperty("vnpay.pay-url");
 
         Map<String, String> vnp_Params = new HashMap<>();
@@ -88,9 +87,20 @@ public class VnPayPaymentService extends AbstractTicketPurchasePaymentService {
             "vnp_Locale",
             "vn"
         );
+        String returnUrl = properties.getProperty("vnpay.return-url");
+        if (!returnUrl.startsWith("http")) {
+            returnUrl = String.format(
+                "%s://%s:%s%s/%s",
+                req.getScheme(),
+                req.getServerName(),
+                req.getServerPort(),
+                req.getContextPath(),
+                returnUrl
+            );
+        }
         vnp_Params.put(
             "vnp_ReturnUrl",
-            properties.getProperty("vnpay.return-url")
+            returnUrl
         );
         vnp_Params.put(
             "vnp_IpAddr",

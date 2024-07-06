@@ -8,6 +8,7 @@ import Model.Tournament;
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 import com.microsoft.sqlserver.jdbc.SQLServerException;
+import utils.DateUtils;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -190,7 +191,7 @@ public class MatchScheduleController extends HttpServlet {
             ms.setAwayTeamID(awayTeam);
             ms.setHomeTeamID(homeTeam);
             ms.setMatchLocation(location); // Set the match location
-            ms.setMatchDate(matchDate);
+            ms.setMatchDate(DateUtils.localDateToDate(matchDate));
             ms.setTournament(tour);
 
             mdao.save(ms);
@@ -224,7 +225,7 @@ public class MatchScheduleController extends HttpServlet {
             ms.setAwayTeamID(awayTeam);
             ms.setHomeTeamID(homeTeam);
             ms.setMatchLocation(location); // Set the match location
-            ms.setMatchDate(matchDate);
+            ms.setMatchDate(DateUtils.localDateToDate(matchDate));
             ms.setTournament(tour);
 
             mdao.update(ms);

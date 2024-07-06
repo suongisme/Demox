@@ -7,6 +7,7 @@ import org.apache.commons.lang3.ArrayUtils;
 
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
 import java.util.logging.Level;
@@ -16,6 +17,11 @@ public abstract class ConnectDbDao<T> implements DAO<T> {
 
     private final ConnectDB connectDB = ConnectDB.getInstance();
     protected final Logger logger = Logger.getLogger(this.getClass().getName());
+
+    @Override
+    public List<T> getByIds(Collection<? extends Number> ids) {
+        return null;
+    }
 
     protected <TYPE> Optional<TYPE> queryOne(
         String sql,
@@ -52,6 +58,7 @@ public abstract class ConnectDbDao<T> implements DAO<T> {
         Mapper<ResultSet, TYPE> mapper,
         Object... params
     ) {
+        logger.info("SQL: " + sql);
         return this.process(
             executionDbInput -> {
                 PreparedStatement preparedStatement = executionDbInput.getConnection().prepareStatement(sql);
@@ -92,6 +99,7 @@ public abstract class ConnectDbDao<T> implements DAO<T> {
         boolean cleanup,
         Object... params
     ) {
+        logger.info("SQL: " + sql);
         return this.process(
             executionDbInput -> {
                 Long key = null;

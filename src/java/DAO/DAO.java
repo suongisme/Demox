@@ -4,6 +4,7 @@
  */
 package DAO;
 
+import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
 
@@ -15,6 +16,8 @@ public interface DAO<T> {
     List<T> getAll();
 
     Optional<T> get(int id);
+
+    default List<T> getByIds(Collection<? extends Number> ids) { return null; }
 
     void save(T t);
 

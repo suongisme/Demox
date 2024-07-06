@@ -130,7 +130,8 @@
                             <td>${match.tournament}</td>
                             <td>
                                 <c:choose>
-                                    <c:when test="${match.matchDate.isBefore(now)}">
+                                    <c:when
+                                        test="${match.matchDate.before(now)}">
                                         Completed
                                     </c:when>
                                     <c:otherwise>

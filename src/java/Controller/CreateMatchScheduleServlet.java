@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.time.LocalDate;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 import java.util.logging.Logger;
@@ -23,15 +23,21 @@ public class CreateMatchScheduleServlet extends HttpServlet {
 
     private static final Logger LOGGER = Logger.getLogger(CreateMatchScheduleServlet.class.getName());
 
+    private MatchScheduleDAO mdao;
+    private MatchStatisticDAO msdao;
+
+    @Override
+    public void init() throws ServletException {
+        mdao = new MatchScheduleDAO();
+        msdao = new MatchStatisticDAO();
+    }
+
     protected void processRequest(
         HttpServletRequest request,
         HttpServletResponse response
     ) throws ServletException, IOException {
-        MatchScheduleDAO mdao = new MatchScheduleDAO();
-        MatchStatisticDAO msdao = new MatchStatisticDAO();
         TeamDAO tdao = new TeamDAO();
-        List<MatchSchedule> matches = null;
-        matches = mdao.getAll();
+        List<MatchSchedule> matches = mdao.getAll();
         for (MatchSchedule m : matches) {
             Optional<Team> homeTeam = tdao.get(m.getHomeTeamID());
             Team homeTeams = homeTeam.orElse(null);
@@ -57,8 +63,9 @@ public class CreateMatchScheduleServlet extends HttpServlet {
         }
         request.setAttribute(
             "currentDate",
-            LocalDate.now()
+            new Date()
         );
+
         request.setAttribute(
             "matches",
             matches
